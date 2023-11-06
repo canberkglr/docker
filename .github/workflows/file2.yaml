@@ -1,1 +1,17 @@
+name: Docker Image CI
 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  push:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Push the image
+      run: docker push canberkglr/gittest:$(date +%s)
