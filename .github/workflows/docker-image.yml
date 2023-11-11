@@ -17,11 +17,20 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag canberkglr/gittest:latest
 
-  build2:
+  push:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag canberkglr/gittest:latest
+    - name: Push Docker image
+      run: docker push canberkglr/gittest:latest
+
+  pull:
+    needs: push
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Push Docker image
+      run: docker pull canberkglr/gittest:latest
