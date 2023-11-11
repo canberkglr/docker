@@ -17,9 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag canberkglr/gittest:latest
 
-    - uses: actions/checkout@v3
-    - name: Push Docker image
-      run: docker push canberkglr/gittest:latest
 
   pull:
     needs: build
